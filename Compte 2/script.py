@@ -1,7 +1,7 @@
-from class_account import *
+from class_Compte import *
 from class_user import *
-from class_premium import *
-from class_bank import *
+from class_Premium import *
+from class_Banque import *
 
 print("===========================")
 print("Bienvenue à la BANK")
@@ -9,11 +9,11 @@ print("===========================")
 print("Apuyer sur Entrer pour commencer")
 
 # a = User("a","a")
-# b = premium("b","b")
+# b = Premium("b","b")
 # b.creer_compte(2000)
 # a.creer_compte(1000)
 # liste_user = [b]
-b = Banque()
+banque = Banque(5)
 while True:
     input()
     choix_user = input("Etes vous un nouvel utilisateur ou un client ? Nouveaux (n) - Client (c)\n")
@@ -30,28 +30,28 @@ while True:
                 print("=========================")
                 print("Creation de compte validé")
                 print("=========================")
-                b.clients.append(utilisateur)
+                banque.ajouter_client(utilisateur)
                 # liste_user.append(utilisateur)
                 utilisateur.creer_compte(montant)
                 utilisateur.afficher_info()   
                 
             elif types == "pre":
-                print("Création d'un compte premium")
+                print("Création d'un compte Premium")
                 nom = input("Quel est votre nom ?\t\n")
                 mdp = input("Veuillez saisir un mot de passse\t\n")
                 montant = int(input("De combien souhaitez vous créditer votre compte?\t\n"))
-                utilisateur = premium(nom ,mdp )
+                utilisateur = Premium(nom ,mdp )
                 
                 print("=========================")
                 print("Creation de compte validé")
                 print("=========================")
-                b.clients.append(utilisateur)
+                banque.ajouter_client(utilisateur)
                 # liste_user.append(utilisateur)
                 utilisateur.creer_compte(montant)
                 utilisateur.afficher_info()
 
             else:
-                print("Veuillez répondre par (cla) pour un compte classique ou (pre) pour un compte premium")
+                print("Veuillez répondre par (cla) pour un compte classique ou (pre) pour un compte Premium")
     
     elif choix_user == "c":
         print("==================")
@@ -60,15 +60,15 @@ while True:
         continuer = True
         while continuer:   #------------gestion erreur sur le d'utilisateur------------
             login_user = input("Veuillez entrer votre nom d'utilisateur\n")   
-            for i in b.clients:
+            for i in banque.clients:
             # for i in liste_user:    
                 if login_user == i.nom:
                         login_mdp = input("Veuillez entrer votre mot de passe\n")
                         if login_mdp == i.mdp:    
                             print("Connecté")                                                        
-                            if isinstance(i,premium) == True:
-                                while True:  #------------gestion erreur sur les options du premium ------------          
-                                    choix_premium = int(input("Que voulez vous faire ?\n\t"
+                            if isinstance(i,Premium) == True:
+                                while True:  #------------gestion erreur sur les options du Premium ------------          
+                                    choix_Premium = int(input("Que voulez vous faire ?\n\t"
                                                     "1: visualiser votre solde\n\t"
                                                     "2: créditer votre compte\n\t"
                                                     "3: débiter votre compte\n\t"
@@ -76,25 +76,25 @@ while True:
                                                     "5: Faire un emprunt\n\t"
                                                     "6: Quitter\n\t"))
 
-                                    if choix_premium == 1:
+                                    if choix_Premium == 1:
                                         i.compte.Afficher()
-                                    elif choix_premium == 2:
+                                    elif choix_Premium == 2:
                                         montant = int(input("De combien souhaitez vous créditer ?\n"))
                                         i.compte.Crediter(montant)
-                                    elif choix_premium == 3:
+                                    elif choix_Premium == 3:
                                         mont= int(input("De combien souhaitez vous débiter ?\n"))
                                         i.compte.Debiter(mont)
-                                    elif choix_premium == 4:
+                                    elif choix_Premium == 4:
                                         i.compte.AfficherCredits()
-                                    elif choix_premium == 5:
+                                    elif choix_Premium == 5:
                                         emp = int(input("Quel montant souhaitez vous emprunter ?\n")) 
-                                        b.preter(emp)
+                                        banque.preter(i)
                                         # i.emprunter(emp)
                                     else:
                                         print("Au revoir")
                                         continuer = False                                    
                                         break
-                            elif isinstance(i,premium) == False:
+                            elif isinstance(i,Premium) == False:
                                 while True:    #------------gestion erreur sur les options du classique ------------  
                                         choix_classique = int(input("Que voulez vous faire ?\n\t"
                                                         "1: visualiser votre solde\n\t"
