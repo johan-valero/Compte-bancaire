@@ -1,4 +1,4 @@
-from class_account import * 
+from class_Compte import * 
 
 class User:
     def __init__(self,nom, mdp):
@@ -16,4 +16,3 @@ class User:
         self.compte = Compte(self.nom)
         self.compte.Crediter(montant)
 
-     

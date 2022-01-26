@@ -1,8 +1,8 @@
 from class_user import * 
-from class_account import * 
-from class_bank import * 
+from class_Compte import * 
+from class_Banque import * 
 
-class premium(User):
+class Premium(User):
     def __init__(self, nom ,mdp):
         super().__init__(nom, mdp)
         self.emprunt = 0
