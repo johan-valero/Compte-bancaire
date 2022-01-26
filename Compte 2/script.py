@@ -4,7 +4,7 @@ from class_premium import *
 from class_bank import *
 
 print("===========================")
-print("Bienvenue sur la banque Leo")
+print("Bienvenue à la BANK")
 print("===========================")
 print("Apuyer sur Entrer pour commencer")
 
@@ -12,7 +12,8 @@ print("Apuyer sur Entrer pour commencer")
 # b = premium("b","b")
 # b.creer_compte(2000)
 # a.creer_compte(1000)
-liste_user = []
+# liste_user = [b]
+b = Banque()
 while True:
     input()
     choix_user = input("Etes vous un nouvel utilisateur ou un client ? Nouveaux (n) - Client (c)\n")
@@ -29,7 +30,8 @@ while True:
                 print("=========================")
                 print("Creation de compte validé")
                 print("=========================")
-                liste_user.append(utilisateur)
+                b.clients.append(utilisateur)
+                # liste_user.append(utilisateur)
                 utilisateur.creer_compte(montant)
                 utilisateur.afficher_info()   
                 
@@ -43,7 +45,8 @@ while True:
                 print("=========================")
                 print("Creation de compte validé")
                 print("=========================")
-                liste_user.append(utilisateur)
+                b.clients.append(utilisateur)
+                # liste_user.append(utilisateur)
                 utilisateur.creer_compte(montant)
                 utilisateur.afficher_info()
 
@@ -57,7 +60,8 @@ while True:
         continuer = True
         while continuer:   #------------gestion erreur sur le d'utilisateur------------
             login_user = input("Veuillez entrer votre nom d'utilisateur\n")   
-            for i in liste_user:
+            for i in b.clients:
+            # for i in liste_user:    
                 if login_user == i.nom:
                         login_mdp = input("Veuillez entrer votre mot de passe\n")
                         if login_mdp == i.mdp:    
@@ -84,7 +88,8 @@ while True:
                                         i.compte.AfficherCredits()
                                     elif choix_premium == 5:
                                         emp = int(input("Quel montant souhaitez vous emprunter ?\n")) 
-                                        i.emprunter(emp)
+                                        b.preter(emp)
+                                        # i.emprunter(emp)
                                     else:
                                         print("Au revoir")
                                         continuer = False                                    

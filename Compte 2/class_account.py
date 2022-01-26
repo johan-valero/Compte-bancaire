@@ -38,4 +38,4 @@ class Compte:
 
     def AfficherCredits(self):
         for i in self.credit:
-            print(self.date_creation,":", i)
+            print(self.date_creation,":", i,"€")
