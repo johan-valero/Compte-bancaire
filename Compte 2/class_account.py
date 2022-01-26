@@ -13,19 +13,19 @@ class Compte:
     def Crediter(self, montant):
         self.solde += montant
         self.credit.append(montant)
-        print("Votre compte a bien été crédité de {}€".format(montant))
+        print("{} : +{}€".format(self.date_creation,montant))
         self.Afficher()
 
     def Debiter(self, montant):
         if self.solde > montant:
             self.solde -= montant
-            print("Votre compte a bien été débité de {}€".format(montant))
+            print("{} : -{}€".format(self.date_creation,montant))
             self.Afficher()
         else:
-            print("erreur, vous n'avez pas assez d'argent")
+            print("Fond insuffisant")
 
     def Afficher(self):
-        print("Vous disposez de {}€ sur votre compte".format(self.solde))
+        print("Solde : {}€".format(self.solde))
 
     def Resume(self):
         print("Le proprietaire du compte est {}. "
@@ -38,4 +38,4 @@ class Compte:
 
     def AfficherCredits(self):
         for i in self.credit:
-            print(i)
+            print(self.date_creation,":", i)
