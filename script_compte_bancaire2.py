@@ -1,3 +1,4 @@
+from time import sleep
 from classe_compte import *
 from classe_user import *
 from classe_premium import *
@@ -13,7 +14,6 @@ a.creer_compte(1000)
 liste_user = [a, b]
 
 while True:
-    input()
     choix_user = input("Etes vous un nouvel utilisateur ou un client ? Nouveaux (n) - Client (c)\n")
     if choix_user == "n":
             types = input("Veuillez choisir votre type de compte : Classique (cla) - Premium (pre)\t\n") 
@@ -25,6 +25,7 @@ while True:
                 utilisateur = User(nom ,mdp )
                 liste_user.append(utilisateur)
                 utilisateur.creer_compte(montant)
+                sleep(1)
                 print("=========================")
                 print("Creation de compte validé")
                 print("=========================")
@@ -38,6 +39,7 @@ while True:
                 utilisateur = premium(nom ,mdp )
                 liste_user.append(utilisateur)
                 utilisateur.creer_compte(montant)
+                sleep(1)
                 print("=========================")
                 print("Creation de compte validé")
                 print("=========================")
