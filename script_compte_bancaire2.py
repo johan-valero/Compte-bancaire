@@ -6,51 +6,58 @@ print("===========================")
 print("Bienvenue sur la banque Leo")
 print("===========================")
 
-popo = User("Bro","bro")
-popo_pre = premium("boro", "1")
-popo_pre.creer_compte(2000)
-popo.creer_compte(1000)
-liste_user = [popo, popo_pre]
+a = User("a","a")
+b = premium("b", "b")
+b.creer_compte(2000)
+a.creer_compte(1000)
+liste_user = [a, b]
 
-choix_user = input("Etes vous un Nouvel utilisateur ou client ? Nouveaux (n) - Client (c)\n")
+while True:
+    input()
+    choix_user = input("Etes vous un nouvel utilisateur ou un client ? Nouveaux (n) - Client (c)\n")
+    if choix_user == "n":
+            types = input("Veuillez choisir votre type de compte : Classique (cla) - Premium (pre)\t\n") 
+            if types == "cla":
+                print("Création d'un compte classique")
+                nom = input("Quel est votre nom ?\t\n")
+                mdp = input("Veuillez saisir un mot de passse\t\n")
+                montant = int(input("De combien souhaitez vous créditer votre compte?\t\n"))
+                utilisateur = User(nom ,mdp )
+                liste_user.append(utilisateur)
+                utilisateur.creer_compte(montant)
+                print("=========================")
+                print("Creation de compte validé")
+                print("=========================")
+                utilisateur.afficher_info()   
+                
+            elif types == "pre":
+                print("Création d'un compte premium")
+                nom = input("Quel est votre nom ?\t\n")
+                mdp = input("Veuillez saisir un mot de passse\t\n")
+                montant = int(input("De combien souhaitez vous créditer votre compte?\t\n"))
+                utilisateur = premium(nom ,mdp )
+                liste_user.append(utilisateur)
+                utilisateur.creer_compte(montant)
+                print("=========================")
+                print("Creation de compte validé")
+                print("=========================")
+                utilisateur.afficher_info()
 
-if choix_user == "n":
-    types = input("Veuillez choisir votre type de compte : Classique (cla) - Premium (Pre)\t\n") 
-    if types == "cla":
-        print("Création d'un compte classique")
-        nom = input("Quel est votre nom ?\t\n")
-        mdp = input("Veuillez saisir un mot de passse\t\n")
-        montant = int(input("De combien souhaitez vous créditer votre compte?\t\n"))
-        utilisateur = User(nom ,mdp )
-        liste_user.append(utilisateur)
-        utilisateur.creer_compte(montant)
-        utilisateur.afficher_info()
-        
-    elif types == "pre":
-        print("Création d'un compte premium")
-        nom = input("Quel est votre nom ?\t\n")
-        mdp = input("Veuillez saisir un mot de passse\t\n")
-        montant = int(input("De combien souhaitez vous créditer votre compte?\t\n"))
-        utilisateur = premium(nom ,mdp )
-        liste_user.append(utilisateur)
-        utilisateur.creer_compte(montant)
-        utilisateur.afficher_info()
-
-    else:
-        print("Veuillez répondre par (cla) pour un compte classique ou (pre) pour un compte premium")
-
-elif choix_user == "c":
+            else:
+                print("Veuillez répondre par (cla) pour un compte classique ou (pre) pour un compte premium")
+    
+    elif choix_user == "c":
         print("Connexion")
-        # verif_login = False
-        while True:
-            login_user = input("Veuillez entrer votre nom d'utilisateur\n")    
+        continuer = True
+        while continuer:   #------------gestion erreur sur le d'utilisateur------------
+            login_user = input("Veuillez entrer votre nom d'utilisateur\n")   
             for i in liste_user:
                 if login_user == i.nom:
                         login_mdp = input("Veuillez entrer votre mot de passe\n")
                         if login_mdp == i.mdp:    
-                            print("Connecté")                        
-                            # print("Ce compte est il premium ? : " + str(isinstance(i, premium)))                                    
-                            if isinstance(i,premium) == True:              
+                            print("Connecté")                                                        
+                            if isinstance(i,premium) == True:
+                                while True:  #------------gestion erreur sur les options du premium ------------          
                                     choix_premium = int(input("Que voulez vous faire ?\n\t"
                                                     "1: visualiser votre solde\n\t"
                                                     "2: créditer votre compte\n\t"
@@ -74,8 +81,10 @@ elif choix_user == "c":
                                         i.emprunter(emp)
                                     else:
                                         print("Au revoir")
-                                    break                                    
-                            elif isinstance(i,premium) == False:    
+                                        continuer = False                                    
+                                        break
+                            elif isinstance(i,premium) == False:
+                                while True:    #------------gestion erreur sur les options du classique ------------  
                                         choix_classique = int(input("Que voulez vous faire ?\n\t"
                                                         "1: visualiser votre solde\n\t"
                                                         "2: créditer votre compte\n\t"
@@ -95,40 +104,10 @@ elif choix_user == "c":
                                             i.compte.AfficherCredits()
                                         else:
                                             print("Au revoir")
+                                            continuer = False
                                             break
-            # verif_login = True 
-            # if not verif_login:
-            #     print("Utilisateur ou mot de passe incorrect")                   
-
-            #         else:
-            #             print("Mot de passe incorrect\n ")                    
-            # else:
-            #     print("Nom d'utilisateur inconnu ou incorrect\n")
-    
-
-
-# verif_login = False
-# for i in User:
-#     if i.nom == login_mdp:
-
-#     verif_login = True
-
-# if not in verif_login: 
-#     print("Utilisateur ou mot de passe incorrect")        
-            
-
-
-
-
-    
-  
-
-
-
-
-
-
-
-
-
-
+                                        
+                        else: #------------fin gestion sur mdp et utlisateur  ------------
+                            print("Mot de passe ou utilisateur incorrect\n ")                           
+    else:
+        print("Veuillez répondre par c ou n \n") #------------fin gestion sur nouveau ou client  ------------
