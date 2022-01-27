@@ -20,7 +20,7 @@ def types_de_compte(banque):
         banque.ajouter_client(utilisateur)
         utilisateur.creer_compte(montant)
         utilisateur.afficher_info()
-        print("Appuyer sur ENTREE pour revenir au menu principal")
+        print("Appuyer sur ENTREE pour vous connecter")
 
     elif types == "pre":
         print("Création d'un compte premium")
@@ -35,7 +35,7 @@ def types_de_compte(banque):
         banque.ajouter_client(utilisateur)
         utilisateur.creer_compte(montant)
         utilisateur.afficher_info()
-        print("Appuyer sur ENTREE pour revenir au menu principal")
+        print("Appuyer sur ENTREE pour vous connecter")
     else:
         print("Veuillez répondre par (cla) pour un compte classique ou (pre) pour un compte premium")
 

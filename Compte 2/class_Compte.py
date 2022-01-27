@@ -39,3 +39,7 @@ class Compte:
     def AfficherCredits(self):
         for i in self.credit:
             print(self.date_creation,":", i,"€")
+
+    def __repr__(self):
+        return repr(self.proprietaire)
+        

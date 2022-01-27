@@ -4,9 +4,9 @@ from class_Premium import *
 from class_Banque import *
 from functions import *
 
-print("===========================")
-print("Bienvenue à la BANK")
-print("===========================")
+print("=====================")
+print(" Bienvenue à la BANK")
+print("=====================")
 print("Apuyer sur ENTREE pour commencer")
 
 banque = Banque(50000)
@@ -21,9 +21,9 @@ while True:
         print("Création de compte")
         types_de_compte(banque)      
     elif choix_user == "c":
-        print("==================")
-        print("Espace utilisateur")
-        print("==================")
+        print("====================")
+        print(" Espace utilisateur")
+        print("====================")
         client = authentification(banque)                              
         if client:
             print("Connecté")
