@@ -2,7 +2,8 @@ from class_Compte import *
 from class_user import *
 from class_Premium import *
 from class_Banque import *
-from function import *
+from functions import *
+
 print("===========================")
 print("Bienvenue à la BANK")
 print("===========================")
@@ -57,12 +58,14 @@ while True:
         print("==================")
         continuer = True
         while continuer:  # ------------WHILE 1------------
-            login_user = input("Veuillez entrer votre nom d'utilisateur\n")
-            client = banque.trouver_client(login_user) 
-            if client:
-                login_mdp = input("Veuillez entrer votre mot de passe\n")
-                client2 = banque.trouver_mdp(login_mdp)                
-                if client2:
+            # login_user = input("Veuillez entrer votre nom d'utilisateur\n")
+            # client = banque.trouver_client(login_user) 
+            # if client:
+            #     login_mdp = input("Veuillez entrer votre mot de passe\n")
+            #     client2 = banque.trouver_mdp(login_mdp)
+                client = authentification(banque)    
+                          
+                if client:
                     print("Connecté")
                     if isinstance(client, Premium) == True:
                         while True:  # ------------WHILE 2  ------------
