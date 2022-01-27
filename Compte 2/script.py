@@ -133,7 +133,7 @@ from class_Banque import *
 print("===========================")
 print("Bienvenue à la BANK")
 print("===========================")
-print("Apuyer sur Entrer pour commencer")
+print("Apuyer sur ENTREE pour commencer")
 
 # a = User("a","a")
 # b = premium("b","b")
@@ -147,12 +147,10 @@ banque.ajouter_client(moi)
 
 while True:
     input()
-    choix_user = input(
-        "Etes vous un nouvel utilisateur ou un client ? Nouveaux (n) - Client (c)\n")
+    choix_user = input("Etes vous un nouvel utilisateur ou un client ? Nouveaux (n) - Client (c)\n")
     if choix_user == "n":
         print("Création de compte")
-        types = input(
-            "Veuillez choisir un type de compte : Classique (cla) - Premium (pre)\t\n")
+        types = input("Veuillez choisir un type de compte : Classique (cla) - Premium (pre)\t\n")
         if types == "cla":
             print("Création d'un compte classique")
             nom = input("Quel est votre nom ?\t\n")
@@ -167,6 +165,7 @@ while True:
             # liste_user.append(utilisateur)
             utilisateur.creer_compte(montant)
             utilisateur.afficher_info()
+            print("Appuyer sur ENTREE pour revenir au menu principal")
 
         elif types == "pre":
             print("Création d'un compte premium")
@@ -182,7 +181,7 @@ while True:
             # liste_user.append(utilisateur)
             utilisateur.creer_compte(montant)
             utilisateur.afficher_info()
-
+            print("Appuyer sur ENTREE pour revenir au menu principal")
         else:
             print(
                 "Veuillez répondre par (cla) pour un compte classique ou (pre) pour un compte premium")
@@ -228,6 +227,7 @@ while True:
                             elif choix_premium == 4:
                                 client.compte.AfficherCredits()
                             elif choix_premium == 5:
+                                # emp = input("Combien souhaitez vous emprunter ?")
                                 banque.preter(client)
                                 print(
                                     f"La banque vous a prêté {banque.pecule}€")
