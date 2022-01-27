@@ -21,9 +21,10 @@ class Banque:
     def preter(self,client,montant_voulu):
         if self.pecule >= montant_voulu :
             client.compte.Crediter(montant_voulu)
+            self.pecule -= montant_voulu
         else:
             print("Fond de la banque insuffisant")
-
+            print(f"Fond de la banque encore disponible {self.pecule}€")
 
     def trouver_client(self,nom):
         for client in self.clients:
@@ -37,7 +38,7 @@ class Banque:
                 return client
         return None
 
-
+    
 
 
 
