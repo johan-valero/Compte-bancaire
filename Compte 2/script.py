@@ -229,8 +229,7 @@ while True:
                             elif choix_premium == 5:
                                 # emp = input("Combien souhaitez vous emprunter ?")
                                 banque.preter(client)
-                                print(
-                                    f"La banque vous a prêté {banque.pecule}€")
+                                print(f"La banque vous a prêté {banque.pecule}€")
                                 # client.emprunter(emp)
                             else:
                                 print("Au revoir")
