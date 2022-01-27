@@ -26,7 +26,7 @@ def types_de_compte(banque):
         print("Création d'un compte premium")
         nom = input("Quel est votre nom ?\t\n")
         mdp = input("Veuillez saisir un mot de passse\t\n")
-        montant = int(input("De combien souhaitez vous créditer votre compte?\t\n"))
+        montant = int(input("De combien souhaitez vous créditer votre compte pour l'ouverture?\t\n"))
         utilisateur = Premium(nom, mdp)
 
         print("=========================")
@@ -105,5 +105,4 @@ def Verification_premium(client,banque):
                         client.compte.AfficherCredits()
                     else:
                         print("Au revoir")
-                        continuer = False
                         break

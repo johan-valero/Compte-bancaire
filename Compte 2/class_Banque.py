@@ -24,7 +24,7 @@ class Banque:
             self.pecule -= montant_voulu
         else:
             print("Fond de la banque insuffisant")
-            print(f"Fond de la banque encore disponible {self.pecule}€")
+            print(f"Fond de la banque encore disponible : {self.pecule}€")
 
     def trouver_client(self,nom):
         for client in self.clients:
