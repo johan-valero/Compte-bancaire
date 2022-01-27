@@ -17,20 +17,33 @@ class Banque:
     def ajouter_client(self,client):
         self.clients.append(client)
         
-    def preter(self,client):
-        client.compte.Crediter(self.pecule)
+
+    def preter(self,client,montant_voulu):
+        if self.pecule >= montant_voulu :
+            client.compte.Crediter(montant_voulu)
+        else:
+            print("Fond de la banque insuffisant")
+
 
     def trouver_client(self,nom):
         for client in self.clients:
             if client.nom == nom:
-                return client
-        
+                return client        
         return None
 
-    
+    def trouver_mdp(self, mdp):
+        for client in self.clients:
+            if client.mdp == mdp:
+                return client
+        return None
 
-        # self.  .Crediter(montant_pret)
-        # self.  .pret += montant_pret
+
+
+
+
+
+# self.  .Crediter(montant_pret)
+# self.  .pret += montant_pret
 
 
 
